@@ -11,4 +11,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ng-my-first-proyect';
+  description = 'hola';
+  card= {
+    title: 'ng-my-first-proyect',
+    description: 'descripcion de la card'
+  }
+  modal= {
+    title: 'ng-my-first-proyect',
+    description: 'descripcion del modal'
+  }
 }
