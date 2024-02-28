@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { PrimerDiaComponent } from './primer-dia/primer-dia.component';
+import { SegundoDiaComponent } from './segundo-dia/segundo-dia.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, PrimerDiaComponent, SegundoDiaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
   title = 'ng-my-first-proyect';
-  description = 'hola';
-  card= {
-    title: 'ng-my-first-proyect',
-    description: 'descripcion de la card'
-  }
-  modal= {
-    title: 'ng-my-first-proyect',
-    description: 'descripcion del modal'
+  dinamico = 'yo soy padre';
+  usuario = 1;
+  constructor() {
+    console.log('sds')
   }
 }

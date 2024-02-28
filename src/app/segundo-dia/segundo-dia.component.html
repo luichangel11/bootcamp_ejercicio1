@@ -1,0 +1,67 @@
+<p>segundo-dia works!</p>
+<button class="btn btn-primary" (click)="clickButton('danger')">
+    cambiar a danger
+</button>
+<button class="btn btn-primary" (click)="clickButton('success')">
+    cambiar a succes
+</button>
+
+<p>usando ngif para los botones</p>
+<div *ngIf="variable === 'success'">
+    <button class="btn btn-success">success</button>
+</div>
+<div *ngIf="variable === 'danger'">
+    <button class="btn btn-danger">danger</button>
+</div>
+
+<p>usando ngclass para los botones</p>
+<div>
+    <button class="btn" [ngClass]="{'btn-success': variable === 'success'}">
+        success
+    </button>
+    <button class="btn" [ngClass]="{'btn-danger': variable === 'danger'}">
+        danger
+    </button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">descriptions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let itemUser of user">
+            <th scope="row">{{itemUser.id}}</th>
+            <td>{{itemUser.name}}</td>
+            <td>{{itemUser.description}}</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<h3>INPUTS NO REACTIVOS</h3>
+<span>nombre</span>
+<input type="text" class="form-control" [(ngModel)]="name">
+<span>descripcion</span>
+<input type="text" class="form-control" [(ngModel)]="description">
+
+<div class="card bg-dark text-white">
+    <h3>{{name}}</h3>
+    <div class="card-body">
+        <small>{{description}}</small>
+    </div>
+</div>
+<button class="btn btn-success" (click)="submitForm()">
+    mostrar los valores en consola
+</button>
+<br/>
+<h3>INPUTS REACTIVOS</h3>
+<form [formGroup]="formularioUser">
+    <span>Nombre</span>
+    <input type="text" formControlName="name">
+    <span>Description</span>
+    <input type="text" formControlName="description">
+    <button class="btn btn-success" (click)="submitForm()">submit form</button>
+</form>
