@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { PrimerDiaComponent } from './primer-dia/primer-dia.component';
 import { SegundoDiaComponent } from './segundo-dia/segundo-dia.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, PrimerDiaComponent, SegundoDiaComponent],
+  imports: [CommonModule, RouterOutlet, PrimerDiaComponent, SegundoDiaComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
