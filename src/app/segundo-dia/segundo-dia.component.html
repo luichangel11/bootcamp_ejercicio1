@@ -6,7 +6,7 @@
     cambiar a succes
 </button>
 
-<p>usando ngif para los botones</p>
+<h3>usando ngif para los botones</h3>
 <div *ngIf="variable === 'success'">
     <button class="btn btn-success">success</button>
 </div>
@@ -14,7 +14,7 @@
     <button class="btn btn-danger">danger</button>
 </div>
 
-<p>usando ngclass para los botones</p>
+<h3>usando ngclass para los botones</h3>
 <div>
     <button class="btn" [ngClass]="{'btn-success': variable === 'success'}">
         success
@@ -22,6 +22,11 @@
     <button class="btn" [ngClass]="{'btn-danger': variable === 'danger'}">
         danger
     </button>
+</div>
+
+<div>
+    <h3>boton utilizando operador ternario</h3>
+    <button [class]="variable === 'success' ? 'btn btn-success' : 'btn btn-danger'">{{variable}}</button>
 </div>
 
 <table class="table">
