@@ -1,1 +1,25 @@
 <p>tercer-dia works!</p>
+<p>{{service.var_service}}</p>
+
+
+<input type="text" [(ngModel)]="name" class="form-control">
+<button class="btn btn-primary" (click)="service.onClickButton(name)">picale</button>
+
+<div style="height: 300px; overflow-y: auto;">
+    <table class="table">
+        <thead style="position: sticky;">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">descriptions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let itemUser of user; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{editarTexto (itemUser.title)}}</td>
+                <td>{{editarTexto (itemUser.body)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
