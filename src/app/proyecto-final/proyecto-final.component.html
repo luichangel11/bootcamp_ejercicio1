@@ -1,0 +1,105 @@
+<div class="componentContainer">
+    <div class="titleContainer">
+        <div class="title">
+            Proyecto final
+        </div>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal" >Crear un nuevo
+            usuario</button>
+    </div>
+    <div class="bodyContainer">
+        <div class="left-side">
+            <div class="card-container" *ngFor="let item of list; let i=index;">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <div class="actions">
+                            <div style="padding-right: 10px;">
+                                <i class="bi bi-trash3-fill" (click)="deleteUser(item.id = i)"></i>
+                            </div>
+                            <div>
+                                <i class="bi bi-pencil-fill" (click)="editUser(item.id = i)" data-bs-toggle="modal"
+                                    data-bs-target="#formModal"></i>
+                            </div>
+                            <div div style="padding-left: 10px;">
+                                <i class="bi bi-eye-fill" [ngClass]="{'text-success': UserSelected === item.id}"
+                                    (click)="centerMapUserSelected(item.id)"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label for="description">Descripcion:</label>
+                        <p class="card-text" id="description">{{item.description}}</p>
+                        <label for="extraInfo">Datos extra:</label>
+                        <p class="card-text" id="extraInfo">{{item.extraInfo}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="map-container">
+                <google-map height="370px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+                    (mapMousemove)="move($event)">
+                    <map-marker #markerElem="mapMarker" *ngFor="let marker of list" [position]="marker.position">
+                    </map-marker>
+                </google-map>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="formModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="cleanForm()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-container">
+                    <div class="left-side-modal">
+                        <form>
+                            <div class="input-file">
+                                <label for="form-name" class="form-label">Nombre</label>
+                                <input type="text" placeholder="Nombre (Obligatorio)" id="form-name" class="form-control"
+                                    [(ngModel)]="form.name" name="name" />
+                            </div>
+                            <div class="input-file">
+                                <label for="form-description" class="form-label">Descripcion</label>
+                                <textarea class="form-control" id="form-description" rows="3" placeholder="Descripcion (Obligatorio)"
+                                    [(ngModel)]="form.description" name="description"></textarea>
+                            </div>
+                            <div class="input-file">
+                                <label for="form-extraInfo" class="form-label">Datos adicionales</label>
+                                <textarea class="form-control" id="form-extraInfo" rows="3"
+                                    placeholder="Datos adicionales (Opcional)" [(ngModel)]="form.extraInfo"
+                                    name="extraInfo"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="right-side-modal">
+                        <div class="map-container" style="padding: 0 10px 0;">
+                            <google-map height="370px" width="100%" [center]="center" [zoom]="zoom"
+                                (mapClick)="eventHandler($event,'mapClick')"
+                                (mapDblclick)="eventHandler($event,'mapDblclick')"
+                                (mapDrag)="eventHandler($event,'mapDrag')"
+                                (mapDragend)="eventHandler($event,'mapDragend')"
+                                (mapRightclick)="eventHandler($event,'mapRightclick')"
+                                (positionChanged)="eventHandler($event,'marker_positionChanged')">
+                                <map-marker #markerElem="mapMarker" [position]="form.position">
+                                </map-marker>
+                            </google-map>
+                        </div>
+                        <label>Seleccione la ubicacion donde vive el usuario (Obligatorio)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="submitForm()"
+                    [disabled]="(form.name && form.description && form.position.lat && form.position.lng) === ''"
+                    data-bs-dismiss="modal">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

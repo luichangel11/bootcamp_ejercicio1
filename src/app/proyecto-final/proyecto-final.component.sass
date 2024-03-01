@@ -1,0 +1,85 @@
+.componentContainer
+    width: 100vw
+    height: 100%
+    .titleContainer
+        display: flex
+        justify-content: space-between
+        background-color: #333333
+        padding: 3% 5% 15px 5%
+        width: 100%
+        border-bottom: 1px solid black
+        border-bottom-left-radius: 8px
+        border-bottom-right-radius: 8px
+        .title
+            font-size: 24px
+            font-weight: 700
+            color: #fff
+        .btn
+            font-weight: 700
+            background-color: #02779b
+            border: 1px solid #fff
+        .btn:hover
+            background-color: #009ece
+    .bodyContainer
+        display: flex
+        padding: 30px
+        width: 100%
+        height: 100%
+        .left-side
+            display: block
+            overflow: auto
+            height: 400px
+            width: 50%
+            padding: 0 0 0 20px
+            .card-container
+                padding: 0 0 20px 0
+                .card
+                    width: 100%
+                    color: #fff
+                    .card-header
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+                        background-color: #333333
+                        .actions
+                            display: flex
+                            i
+                                width: 50px
+                                cursor: pointer
+                    .card-body
+                        background-color: #636161
+
+        .right-side
+            width: 50%
+            padding: 0 0 0 20px
+            .map-container
+                border: 1px solid #02779b
+
+.modal-header
+    background-color: #333333
+    .btn-close
+        background-color: #02779b
+    .btn-close:hover
+        background-color: #009ece
+.modal-body
+    .modal-container
+        display: flex
+        width: 100%
+        .left-side-modal
+            width: 50%
+            .input-file
+                padding: 30px 0 0 0
+                input
+                    border: 1px solid #636363
+                textarea
+                    border: 1px solid #636363
+        .right-side-modal
+            width: 50%
+            padding: 0 0 0 10px
+            .map-container
+                border: 1px solid #02779b
+.modal-footer
+    display: flex
+    justify-content: center
+    .btn:hover
+        background-color: #22b973
