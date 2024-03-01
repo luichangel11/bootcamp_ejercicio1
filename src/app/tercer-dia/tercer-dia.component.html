@@ -5,7 +5,15 @@
 <input type="text" [(ngModel)]="name" class="form-control">
 <button class="btn btn-primary" (click)="service.onClickButton(name)">picale</button>
 
-<div style="height: 300px; overflow-y: auto;">
+<h3> form para agregar a la lista</h3>
+<form>
+    <input type="text" style="margin-bottom: 10px;" placeholder="title" [(ngModel)]="form.title" name="title"
+        class="form-control">
+    <input type="text" placeholder="body" [(ngModel)]="form.body" name="body" class="form-control">
+    <button class="btn btn-primary" (click)="addNewUser()">picale</button>
+</form>
+
+<div style="height: 200px; overflow: auto;">
     <table class="table">
         <thead style="position: sticky;">
             <tr>
@@ -19,7 +27,41 @@
                 <th scope="row">{{i + 1}}</th>
                 <td>{{editarTexto (itemUser.title)}}</td>
                 <td>{{editarTexto (itemUser.body)}}</td>
+                <td>
+                    <div style="display: flex; margin: 0 20px;">
+                        <div style="padding: 10px;">
+                            <img src="assets/trash3-fill.svg" style="cursor: pointer;"
+                                (click)="deleteUser(itemUser.id)" />
+                        </div>
+                        <div style="padding: 10px;">
+                            <img src="assets/pencil-fill.svg" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                style="cursor: pointer;" (click)="openModal(itemUser.id)" />
+                        </div>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" style="margin-bottom: 10px;" placeholder="title" [(ngModel)]="formEdit.title"
+                        name="title" class="form-control">
+                    <input type="text" placeholder="body" [(ngModel)]="formEdit.body" name="body" class="form-control">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
